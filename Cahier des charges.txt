@@ -1,11 +1,23 @@
 Le centre d'activité
 
+Les points : 
+    - 10 points coûtent 5€
+
 Les activités :
-
-
-
-
-
+    - Une séance de musculation : 10 points
+    - Une séance d’aquagym : 15 points
+    - Une séance de SPA : 20 points
+    - Une séance de danse : 10 points
+    - Une séance de loisirs créatifs : 10 points
+    - Une séance de basket : 10 points
+    - Une séance de football : 10 points 
+    - Une séance de escape game : 20 points
+    - Une séance d'athlétisme : 10 points
+    - Une séance de massage : 15 points
+    - Une séance de boxe française : 10 points
+    - Une séance d'escrime :  10 points
+    - Une séance de gym : 10 points
+    - Une séance d'équitation : 15 points
 
 
 Les spécificités :
