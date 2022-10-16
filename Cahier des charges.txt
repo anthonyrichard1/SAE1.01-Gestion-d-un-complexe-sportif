@@ -26,3 +26,6 @@ Les spécificités :
 
     - Les points utilisés :
         Si un adhérant à utiliser 50 points, il obtient 10 points. 
+
+    - Fréquentation centre
+        Un adherent ne peut fréquenter le centre que 2 fois par jour. 
