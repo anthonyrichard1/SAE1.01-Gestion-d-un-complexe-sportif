@@ -29,3 +29,18 @@ Les spécificités :
 
     - Fréquentation centre
         Un adherent ne peut fréquenter le centre que 2 fois par jour. 
+
+
+Conception du programme
+
+Les fonctions :
+    - Accueil : permet d'accéder aux différentes fonctions du programme.
+    - SaisirAdherent : permet de saisir un nouvel adherent.
+    - SaisirPoints : permet de saisir de nouveaux points pour un adherent.
+    - RechercheAdherent : permet de chercher un adherent dans le fichier des adherents
+    - PointsBonus : permet de donner des points bonus.
+    - AfficheAdherent : permet d'afficher d'un adherent.
+    - AfficheListeAdherent : permet d'afficher la liste de tous les adherents.
+    - AfficheEntree : permet d'afficher le nombre d'entrée à une activité pour la journée.
+    - SaisirEntree : permet de saisir une entree pour une activite. 
+    - Frequentation : permet de vérifier la frequentation d'un centre par un adherent.
