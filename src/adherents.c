@@ -115,3 +115,118 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdher
 		}
 	}
 }
+
+int alimenterCarte(int tIdCartes[], int nbAdherents, int tNbPoints[]) {
+	int points, identifiant, trouve, pos;
+	
+	printf("Entrez votre identifiant : ");
+	scanf("%d", &identifiant);
+	if (identifiant == -1) {
+			printf("Fin de l'opération...\n");
+			return;
+		}
+	pos = rechercherAdherent(tIdCartes, nbAdherents, identifiant, &trouve);
+	
+	while (trouve ==  0) {
+		printf("Nous ne trouvons pas votre identifiant. ");
+		printf("Entrez votre identifiant : ");
+		scanf("%d", &identifiant);
+		pos = rechercherAdherent(tIdCartes, nbAdherents, identifiant, &trouve);
+	}
+	
+	printf("Vous avez %d points. 1 point vaut 0.5€.", tNbPoints[pos]);
+	printf("\nNombre de points souhaité (-1 pour annuler l'opération) : ");
+	scanf("%d", &points);
+	
+	if (points == -1) {
+		printf("Fin de l'opération...\n");
+		return;
+	}
+				
+	while (points <= 0) {
+		printf("Le nombre de poitns doit être supérieur à 0.");
+		printf("\nNombre de points souhaité : ");
+		scanf("%d", &points);
+	}
+	
+	printf("Cela coûte %.2f€.", points*0.5);
+	tNbPoints[pos] += points;
+	printf("\nVous avez %d points.\n", tNbPoints[pos]);
+	return 0;
+}
+
+int supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents) {
+	int identifiant, pos, i, trouve;
+	char verif = 'N';
+	
+	while (1) {
+		while (verif == 'N') {
+			printf("Entrez votre identifiant (-1 pour annuler l'opération) : ");
+			scanf("%d", &identifiant);
+			pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+			
+			if (identifiant == -1) {
+				printf("Fin de l'opération...\n");
+				return;
+			}
+			
+			while (trouve ==  0) {
+				printf("Nous ne trouvons pas votre identifiant. ");
+				printf("Entrez votre identifiant : ");
+				scanf("%d", &identifiant);
+				pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+			}
+			
+			printf("Voulez-vous vraiment supprimé l'adherent %d ? (O/N)  : ", identifiant);
+			scanf("%*c%c", &verif);
+			
+			while (verif != 'O' && verif != 'N') {
+				printf("Erreur de saisie ! ");
+				printf("Voulez-vous vraiment supprimé l'adherent %d ? (O/N)  : ", identifiant);
+				scanf("%*c%c%*c", &verif);
+			}
+			
+			if (verif == 'O') {
+				for(i = pos; i < *nbAdherents; ++i) {
+					tIdCartes[i] =  tIdCartes[i+1];
+					tAges[i] = tAges[i+1];
+					tNbPoints[i] = tNbPoints[i+1];
+					*nbAdherents -= 1;
+				}
+				printf("Adherent %d supprimé.\n", identifiant);
+			}
+			verif == 'N';
+		}
+	}
+}
+
+void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents) {
+	int identifiant, pos, trouve;
+	
+	printf("Entrez votre identifiant (-1 pour annuler l'opération) : ");
+	scanf("%d", &identifiant);
+	pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+		
+	if (identifiant == -1) {
+		printf("Fin de l'opération...\n");
+		return;
+	}
+		
+	while (trouve ==  0) {
+		printf("Nous ne trouvons pas votre identifiant. ");
+		printf("Entrez votre identifiant : ");
+		scanf("%d", &identifiant);
+		pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+	}
+	
+	printf("L'adherent %d a %d ans et a %d points. ", identifiant, tAges[pos], tNbPoints[pos]);
+}
+
+void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents) {
+	int i;
+	
+	printf("Id carte | Age | nb points\n");
+	for(i = 0; i < *nbAdherents; ++i) {
+		printf("%d\t | %d  | %d\n", tIdCartes[i], tAges[i], tNbPoints[i]);
+	}
+}

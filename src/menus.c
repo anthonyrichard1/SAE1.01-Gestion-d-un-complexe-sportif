@@ -69,6 +69,22 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int *nbMaxAdhe
 				ajouterAdherent(tIdCartes, tAges, tNbPoints, nbAdherents, nbMaxAdherents);
 				break;
 
+			case 2 :
+				alimenterCarte(tIdCartes, nbAdherents, tNbPoints);
+				break;
+				
+			case 4 :
+				supprimerAdherent(tIdCartes, tAges, tNbPoints, nbAdherents);
+				break;
+				
+			case 5 :
+				afficheAdherent(tIdCartes, tAges, tNbPoints, nbAdherents);
+				break;
+				
+			case 6 : 
+				afficheTAdherent(tIdCartes, tAges, tNbPoints, nbAdherents);
+				break;
+				
 			case 9 :
 				return;
 			
