@@ -70,7 +70,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int *nbMaxAdhe
 				break;
 
 			case 2 :
-				alimenterCarte(tIdCartes, nbAdherents, tNbPoints);
+				alimenterCarte(tIdCartes, tNbPoints, nbAdherents);
 				break;
 				
 			case 4 :
