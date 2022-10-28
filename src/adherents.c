@@ -25,13 +25,14 @@ int rechercherAdherent(int tIdCartes[], int nbAdherents, int val, int *trouve)
 	return i;
 }
 
-void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents, int *nbMaxAdherents)
+void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbAdherents, int *nbMaxAdherents)
 {
-	unsigned idCarte, age, nbPoints, pos, i = *nbAdherents-1;
+	int idCarte, age, nbPoints, pos, i;
 	int trouve;
 
 	while (1)
 	{
+		i = *nbAdherents-1;
 
 		if (*nbAdherents == *nbMaxAdherents)
 		{
@@ -67,7 +68,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdher
 			printf("Entrez l'age de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
 			scanf("%d", &age);
 
-			while (age < 0)
+			while (age <= 0)
 			{
 				if (age == -1)
 				{
@@ -75,7 +76,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdher
 					return;
 				}
 
-				fprintf(stderr, "Erreur : l'age entré est invalide (nombre négatif), recommencez\n");
+				fprintf(stderr, "Erreur : l'age entré est invalide (nombre négatif ou nul), recommencez\n");
 				printf("Entrez l'age de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
 				scanf("%d", &age);
 			}
@@ -87,7 +88,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdher
 			{
 				if (nbPoints == -1)
 				{
-					printf("Fin de l'opération...");
+					printf("Fin de l'opération...\n");
 					return;
 				}
 
@@ -101,17 +102,20 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdher
 				tIdCartes[i+1] = tIdCartes[i];
 				tAges[i+1] = tAges[i];
 				tNbPoints[i+1] = tNbPoints[i];
-				i++;
+				tCartesActives[i+1] = tCartesActives[i];
+				i--;
 			}
 
 			tIdCartes[pos] = idCarte;
 			tAges[pos] = age;
 			tNbPoints[pos] = nbPoints;
+			tCartesActives[pos] = 1;
 
 			idCarte = -1;
 			age = -1;
 			nbPoints = -1;
 			++*nbAdherents;
+			printf("Adhérent ajouté !\n");
 		}
 	}
 }
@@ -154,6 +158,75 @@ void alimenterCarte(int tIdCartes[], int tNbPoints[], int *nbAdherents) {
 		printf("Cela coûte %.2f€.", points*0.5);
 		tNbPoints[pos] += points;
 		printf("\nVous avez %d points.\n", tNbPoints[pos]);
+	}
+}
+
+void changerEtatCarte(int tIdCartes[], int tCartesActives[], int nbAdherents)
+{
+	int idCarte, pos, trouve;
+	char choix;
+
+	while (1)
+	{
+		printf("Entrez l'identifiant de la carte (-1 pour annuler l'opération) : ");
+		scanf("%d", &idCarte);
+
+		if (idCarte == -1)
+		{
+			printf("Fin de l'opération...\n");
+			return;
+		}
+		
+		pos = rechercherAdherent(tIdCartes, nbAdherents, idCarte, &trouve);
+
+		if (!trouve)
+		{
+			fprintf(stderr, "Erreur : l'identifiant est inconnu, recommencez\n");
+		}
+		else
+		{
+			if (tCartesActives[pos])
+			{
+				while (choix != 'o' && choix != 'O' && choix != 'n' && choix != 'N')
+				{
+					printf("La carte %d est actuellement activée, voulez-vous la désactiver (O/N) : ", idCarte);
+					scanf("%*c%c%*c", &choix);
+				}
+
+				if (choix == 'o' || choix == 'O')
+				{
+					tCartesActives[pos] = 0;
+					printf("Carte désactivée !\n");
+				}
+				else
+				{
+					printf("Abandon de la procédure...\n");
+				}
+
+				choix = 'a';
+			}
+			else
+			{
+
+				while (choix != 'o' && choix != 'O' && choix != 'n' && choix != 'N')
+				{
+					printf("La carte %d est actuellement désactivée, voulez-vous l'activer (O/N) :", idCarte);
+					scanf("%*c%c%*c", &choix);
+				}
+				
+				if (choix == 'o' || choix == 'O')
+				{
+					tCartesActives[pos] = 1;
+					printf("Carte activée !\n");
+				}
+				else
+				{
+					printf("Abandon de la procédure\n");
+				}
+
+				choix = 'a';
+			}
+		}
 	}
 }
 

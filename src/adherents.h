@@ -12,12 +12,17 @@ int rechercherAdherent(int tIdCartes[], int nbAdherents, int val, int *trouve);
 /**
  * \brief XXXXXXXXXXX
  */ 
-void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents, int *nbMaxAdherents);
+void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbAdherents, int *nbMaxAdherents);
 
 /**
  * \brief XXXXXXXXXXX
  */ 
 void alimenterCarte(int tIdCartes[], int tNbPoints[], int *nbAdherents);
+
+/**
+ * \brief XXXXXXXXXXX
+ */ 
+void changerEtatCarte(int tIdCartes[], int tCartesActives[], int nbAdherents);
 
 /**
  * \brief XXXXXXXXXXX
