@@ -25,7 +25,7 @@ int rechercherAdherent(int tIdCartes[], int nbAdherents, int val, int *trouve)
 	return i;
 }
 
-void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbAdherents, int *nbMaxAdherents)
+void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbAdherents, int nbMaxAdherents)
 {
 	int idCarte, age, nbPoints, pos, i;
 	int trouve;
@@ -34,7 +34,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesA
 	{
 		i = *nbAdherents-1;
 
-		if (*nbAdherents == *nbMaxAdherents)
+		if (*nbAdherents == nbMaxAdherents)
 		{
 			fprintf(stderr, "Erreur : le nombre d'adhérent maximal a été atteint\n");
 			printf("Fin de l'opération...\n");
@@ -44,7 +44,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesA
 		printf("Entrez l'identifiant de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
 		scanf("%d", &idCarte);
 
-		while (idCarte >= *nbMaxAdherents || idCarte < 0)
+		while (idCarte >= nbMaxAdherents || idCarte < 0)
 		{
 			if (idCarte == -1)
 			{
@@ -120,13 +120,13 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesA
 	}
 }
 
-void alimenterCarte(int tIdCartes[], int tNbPoints[], int *nbAdherents) {
+void alimenterCarte(int tIdCartes[], int tNbPoints[], int nbAdherents) {
 	int points, identifiant, trouve, pos;
 	
 	while(1) {
 		printf("Entrez votre identifiant (-1 pour annuler l'opération) : ");
 		scanf("%d", &identifiant);
-		pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+		pos = rechercherAdherent(tIdCartes, nbAdherents, identifiant, &trouve);
 			
 		if (identifiant == -1) {
 			printf("Fin de l'opération...\n");
@@ -137,7 +137,7 @@ void alimenterCarte(int tIdCartes[], int tNbPoints[], int *nbAdherents) {
 			printf("Nous ne trouvons pas votre identifiant. ");
 			printf("Entrez votre identifiant : ");
 			scanf("%d", &identifiant);
-			pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+			pos = rechercherAdherent(tIdCartes, nbAdherents, identifiant, &trouve);
 		}
 		
 		printf("Vous avez %d points. 1 point vaut 0.5€.", tNbPoints[pos]);
@@ -275,12 +275,12 @@ void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdh
 	}
 }
 
-void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents) {
+void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int nbAdherents) {
 	int identifiant, pos, trouve;
 	
 	printf("Entrez votre identifiant (-1 pour annuler l'opération) : ");
 	scanf("%d", &identifiant);
-	pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+	pos = rechercherAdherent(tIdCartes, nbAdherents, identifiant, &trouve);
 		
 	if (identifiant == -1) {
 		printf("Fin de l'opération...\n");
@@ -291,17 +291,17 @@ void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdher
 		printf("Nous ne trouvons pas votre identifiant. ");
 		printf("Entrez votre identifiant : ");
 		scanf("%d", &identifiant);
-		pos = rechercherAdherent(tIdCartes, *nbAdherents, identifiant, &trouve);
+		pos = rechercherAdherent(tIdCartes, nbAdherents, identifiant, &trouve);
 	}
 	
-	printf("L'adherent %d a %d ans et a %d points. ", identifiant, tAges[pos], tNbPoints[pos]);
+	printf("L'adherent %04d a %d ans et a %d points. ", identifiant, tAges[pos], tNbPoints[pos]);
 }
 
-void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents) {
+void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], int nbAdherents) {
 	int i;
 	
-	printf("Id carte | Age | nb points\n");
-	for(i = 0; i < *nbAdherents; ++i) {
-		printf("%d\t | %d  | %d\n", tIdCartes[i], tAges[i], tNbPoints[i]);
+	printf("Id carte| Age \t| nb points\n");
+	for(i = 0; i < nbAdherents; ++i) {
+		printf("%04d \t| %d \t| %d\n", tIdCartes[i], tAges[i], tNbPoints[i]);
 	}
 }

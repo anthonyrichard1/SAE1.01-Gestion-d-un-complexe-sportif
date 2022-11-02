@@ -20,15 +20,15 @@ int rechercherAdherent(int tIdCartes[], int nbAdherents, int val, int *trouve);
  * \param tAges[] Tableau d'entiers contenant les ages des adhérents.
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau d'entiers contenant des 0 pour les adhérents dont les cartes sont désactivées et 1 pour ceux qui ont une carte active.
- * \param *nbMaxAdherents Pointe vers un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
+ * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
  * \param *nbAdherents Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */ 
-void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbAdherents, int *nbMaxAdherents);
+void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbAdherents, int nbMaxAdherents);
 
 /**
  * \brief XXXXXXXXXXX
  */ 
-void alimenterCarte(int tIdCartes[], int tNbPoints[], int *nbAdherents);
+void alimenterCarte(int tIdCartes[], int tNbPoints[], int nbAdherents);
 
 /**
  * \brief Cette fonction permet de changer l'état d'une carte, l'activer ou la désactiver si elle ne l'est pas.
@@ -46,9 +46,9 @@ void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdh
 /**
  * \brief XXXXXXXXXXX
  */ 
-void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents);
+void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], int nbAdherents);
 
 /**
  * \brief XXXXXXXXXXX
  */ 
-void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], int *nbAdherents);
+void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], int nbAdherents);

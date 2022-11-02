@@ -16,10 +16,10 @@ void menuPrincipal(void);
  * \param tAges[] Tableau d'entiers contenant les ages des adhérents.
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau d'entiers contenant des 0 pour les adhérents dont les cartes sont désactivées et 1 pour ceux qui ont une carte active.
- * \param *nbMaxAdherents Pointe vers un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
+ * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
  * \param *nbAdherents Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */
-void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbMaxAdherents, int *nbAdherents);
+void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int nbMaxAdherents, int *nbAdherents);
 
 /**
  * \brief Cette fonction affiche le menu des activités, et permet de faire sélectionner l'opération que l'on souhaite effectuer sur les activités (liste des disponibilités, réservations par exemple). Le choix de l'utilisateur est récupéré par une saisie au clavier.
@@ -27,10 +27,10 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
  * \param tAges[] Tableau d'entiers contenant les ages des adhérents.
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau d'entiers contenant des 0 pour les adhérents dont les cartes sont désactivées et 1 pour ceux qui ont une carte active.
- * \param *nbMaxAdherents Pointe vers un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
+ * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
  * \param *nbAdherents Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */
-void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentation[], int *nbMaxAdherents, int *nbAdherents);
+void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentation[], int nbMaxAdherents, int nbAdherents);
 
 /**
  * \brief Cette fonction permet de récupérer les données contenues dans le fichier listeAdherents.don pour les stocker dans des tableaux. Elle est utilisée au lancement de l'application.

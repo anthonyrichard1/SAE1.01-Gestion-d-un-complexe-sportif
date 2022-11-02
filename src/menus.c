@@ -26,11 +26,11 @@ void menuPrincipal(void)
 		switch (choix)
 		{
 			case 1 :
-				menuAdherents(tIdCartes, tAges, tNbPoints, tCartesActives, &nbMaxAdherent, &nbAdherent);
+				menuAdherents(tIdCartes, tAges, tNbPoints, tCartesActives, nbMaxAdherent, &nbAdherent);
 				break;
 				
 			case 2 :
-				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, &nbMaxAdherent, &nbAdherent);
+				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, nbMaxAdherent, nbAdherent);
 				break;
 			
 			case 9 :
@@ -44,7 +44,7 @@ void menuPrincipal(void)
 	}	
 }
 
-void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbMaxAdherents, int *nbAdherents)
+void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int nbMaxAdherents, int *nbAdherents)
 {
 	int choix;
 	
@@ -70,7 +70,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 				break;
 
 			case 2 :
-				alimenterCarte(tIdCartes, tNbPoints, nbAdherents);
+				alimenterCarte(tIdCartes, tNbPoints, *nbAdherents);
 				break;
 
 			case 3 :
@@ -82,11 +82,11 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 				break;
 				
 			case 5 :
-				afficheAdherent(tIdCartes, tAges, tNbPoints, nbAdherents);
+				afficheAdherent(tIdCartes, tAges, tNbPoints, *nbAdherents);
 				break;
 				
 			case 6 : 
-				afficheTAdherent(tIdCartes, tAges, tNbPoints, nbAdherents);
+				afficheTAdherent(tIdCartes, tAges, tNbPoints, *nbAdherents);
 				break;
 				
 			case 9 :
@@ -99,7 +99,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 	}	
 }
 
-void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentation[], int *nbMaxAdherents, int *nbAdherents)
+void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentation[], int nbMaxAdherents, int nbAdherents)
 {
 	int choix;
 	
@@ -169,7 +169,7 @@ void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], int tCart
 	
 	while (i < nbAdherents)
 	{
-		fprintf(f, "%05d\t%d\t%d\t%d\n", tIdCartes[i], tAges[i], tNbPoints[i], tCartesActives[i]);
+		fprintf(f, "%04d\t%d\t%d\t%d\n", tIdCartes[i], tAges[i], tNbPoints[i], tCartesActives[i]);
 		i++;
 	}
 	
