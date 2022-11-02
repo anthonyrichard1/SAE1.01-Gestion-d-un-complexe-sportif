@@ -30,7 +30,7 @@ void menuPrincipal(void)
 				break;
 				
 			case 2 :
-				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, &nbMaxAdherent, &nbAdherent);
+				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, &nbMaxAdherent, &nbAdherent);
 				break;
 			
 			case 9 :
@@ -99,7 +99,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 	}	
 }
 
-void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int *nbMaxAdherents, int *nbAdherents)
+void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentation[], int *nbMaxAdherents, int *nbAdherents)
 {
 	int choix;
 	
