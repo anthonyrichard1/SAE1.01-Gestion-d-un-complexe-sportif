@@ -3,19 +3,16 @@
 
 int main (void)
 {
-	int ids[10000] = {1, 1234, 5678, 6234, 6789, 9998},
-	ages[1000] = {5, 10, 15, 20, 25, 30},
-	points[10000] = {5, 10, 15, 20, 25, 30},
-	actives[10000] = {0, 1, 0, 1, 0, 1}, trouve, pos, nbAdherents = 6, nbMaxAdherents = 10000;
-	FILE *f;
+	int ids[10] = {1, 2, 3, 6, 7, 8}, ages[10] = {5, 10, 15, 20, 25, 30}, points[10] = {5, 10, 15, 20, 25, 30}, trouve, pos, nbAdherents = 6, nbMaxAdherents = 10, dep[10] = {5, 10, 15, 20, 25, 30};
+	char actives[10] = {'N', 'O', 'N', 'O', 'N', 'O'}, freq[10] = {'N', 'O', 'N', 'O', 'N', 'O'};
 
 	printf("Soit la liste des adhérents suivantes :\n");
 
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
 
-	printf("rechercherAdherents :\n");
+	printf("-> rechercherAdherents :\n"); //rechercherAdherents
 
 	printf("val = 1 (premier élément de la liste)\n");
 	pos = rechercherAdherent(ids, nbAdherents, 1, &trouve);
@@ -27,65 +24,105 @@ int main (void)
 
 	printf("--------------------\n\n");
 
-	printf("val = 9998 (dernier élément de la liste)\n");
-	pos = rechercherAdherent(ids, nbAdherents, 9998, &trouve);
+	printf("val = 8 (dernier élément de la liste)\n");
+	pos = rechercherAdherent(ids, nbAdherents, 8, &trouve);
 	printf("trouve = %d pos = %d\n", trouve, pos);
 
 	printf("--------------------\n\n");
 
-	printf("val = 3333 (une valeur au milieu)\n");
-	pos = rechercherAdherent(ids, nbAdherents, 3333, &trouve);
+	printf("val = 5 (une valeur au milieu mais pas dans la liste)\n");
+	pos = rechercherAdherent(ids, nbAdherents, 5, &trouve);
 	printf("trouve = %d pos = %d\n", trouve, pos);
 
 	printf("--------------------\n\n");
 
-	printf("val = 5678 (une valeur au milieu mais déjà dans la liste)\n");
-	pos = rechercherAdherent(ids, nbAdherents, 5678, &trouve);
+	printf("val = 6 (une valeur au milieu mais déjà dans la liste)\n");
+	pos = rechercherAdherent(ids, nbAdherents, 6, &trouve);
 	printf("trouve = %d pos = %d\n", trouve, pos);
 
 	printf("--------------------\n\n");
 
-	printf("val = 9999 (fin du tableau mais pas dans la liste)\n");
-	pos = rechercherAdherent(ids, nbAdherents, 9999, &trouve);
+	printf("val = 9 (fin du tableau mais pas dans la liste)\n");
+	pos = rechercherAdherent(ids, nbAdherents, 9, &trouve);
 	printf("trouve = %d pos = %d\n", trouve, pos);
 
 	printf("--------------------\n\n");
 
-	printf("ajouterAdherents :\n");
-	afficheTAdherent(ids, ages, points, nbAdherents);
-	printf("id = 00001 (déjà dans la liste)\n");
-	ajouterAdherent(ids, ages, points, actives, &nbAdherents, nbMaxAdherents);
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	printf("-> ajouterAdherents :\n"); //ajouterAdherents
+
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+	printf("id = 1 (déjà dans la liste)\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
 
-	printf("id = 10000 (premier id hors du tableau)\n");
-	ajouterAdherent(ids, ages, points, actives, &nbAdherents, nbMaxAdherents);
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	printf("id = 10 (premier id hors du tableau) et id = -42 (id négatif)\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
 
-	printf("id = 5555 age = -7 (invalide) points = 10\n");
-	ajouterAdherent(ids, ages, points, actives, &nbAdherents, nbMaxAdherents);
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	printf("id = 5 age = -7 (invalide) points = 10\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
 
-	printf("id = 5555 age = 10 points = 0 (invalide)\n");
-	ajouterAdherent(ids, ages, points, actives, &nbAdherents, nbMaxAdherents);
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	printf("id = 5 age = 10 points = 0 (invalide)\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
 
-	printf("id = 5555 (milieu de la liste) age = 10 points = 10\n");
-	ajouterAdherent(ids, ages, points, actives, &nbAdherents, nbMaxAdherents);
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	printf("id = 5 (milieu de la liste) age = 10 points = 10\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
 
-	printf("insertions multiples : id = 0 (premier élément) et id = 9999 (dernier élément)\n");
-	ajouterAdherent(ids, ages, points, actives, &nbAdherents, nbMaxAdherents);
-	afficheTAdherent(ids, ages, points, nbAdherents);
+	printf("insertions multiples : id = 0 (premier élément), id = 4 (au milieu) et id = 9 (dernier élément) pour remplir complètement le tableau\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("--------------------\n\n");
+
+	printf("débordement du tableau\n");
+	ajouterAdherent(ids, ages, points, actives, dep, freq, &nbAdherents, nbMaxAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("--------------------\n\n");
+
+	printf("-> changerEtatCarte :\n"); //changerEtatCarte
+
+	printf("id = 10 (pas dans le tableau)\n");
+	changerEtatCarte(ids, actives, nbAdherents);
+
+	printf("--------------------\n\n");
+
+	printf("id = 0 (carte activée) et confirmation\n");
+	changerEtatCarte(ids, actives, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("--------------------\n\n");
+
+	printf("id = 3 (carte désactivée) et confirmation\n");
+	changerEtatCarte(ids, actives, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("--------------------\n\n");
+
+	printf("id = 9 (carte activée) et annulation de l'opération\n");
+	changerEtatCarte(ids, actives, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("--------------------\n\n");
+
+	printf("id = 7 (carte désactivée) et annulation de l'opération\n");
+	changerEtatCarte(ids, actives, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("--------------------\n\n");
+
+	
 }

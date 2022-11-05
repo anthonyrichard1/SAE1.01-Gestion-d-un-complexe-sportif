@@ -8,9 +8,10 @@ void menuPrincipal(void)
 	int choix, nbMaxAdherent = 10000, nbAdherent;
 
 	//Informations des adhérents
-	int tAges[nbMaxAdherent], tIdCartes[nbMaxAdherent], tNbPoints[nbMaxAdherent], tCartesActives[nbMaxAdherent], tFrequentations[nbMaxAdherent];
+	int tAges[nbMaxAdherent], tIdCartes[nbMaxAdherent], tNbPoints[nbMaxAdherent], tPointsDep[nbMaxAdherent];
+	char tCartesActives[nbMaxAdherent], tFrequentations[nbMaxAdherent];
 	
-	nbAdherent = chargerFichier(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations);
+	nbAdherent = chargerFichier(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, tPointsDep);
 	
 	while (1)
 	{
@@ -26,15 +27,15 @@ void menuPrincipal(void)
 		switch (choix)
 		{
 			case 1 :
-				menuAdherents(tIdCartes, tAges, tNbPoints, tCartesActives, nbMaxAdherent, &nbAdherent);
+				menuAdherents(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, tPointsDep, nbMaxAdherent, &nbAdherent);
 				break;
 				
 			case 2 :
-				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, nbMaxAdherent, nbAdherent);
+				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, tPointsDep, nbMaxAdherent, nbAdherent);
 				break;
 			
 			case 9 :
-				sauvegarderFichier(tIdCartes, tAges, tNbPoints, tCartesActives, nbAdherent);
+				sauvegarderFichier(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, nbAdherent);
 				exit(0);
 			
 			default :
@@ -44,7 +45,7 @@ void menuPrincipal(void)
 	}	
 }
 
-void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int nbMaxAdherents, int *nbAdherents)
+void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int *nbAdherents)
 {
 	int choix;
 	
@@ -66,7 +67,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 		switch (choix)
 		{		
 			case 1 :
-				ajouterAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, nbAdherents, nbMaxAdherents);
+				ajouterAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherents, nbMaxAdherents);
 				break;
 
 			case 2 :
@@ -78,15 +79,15 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 				break;
 				
 			case 4 :
-				supprimerAdherent(tIdCartes, tAges, tNbPoints, nbAdherents);
+				supprimerAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherents);
 				break;
 				
 			case 5 :
-				afficheAdherent(tIdCartes, tAges, tNbPoints, *nbAdherents);
+				afficheAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherents);
 				break;
 				
 			case 6 : 
-				afficheTAdherent(tIdCartes, tAges, tNbPoints, *nbAdherents);
+				afficheTAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherents);
 				break;
 				
 			case 9 :
@@ -99,7 +100,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 	}	
 }
 
-void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentation[], int nbMaxAdherents, int nbAdherents)
+void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int nbAdherents)
 {
 	int choix;
 	
@@ -126,10 +127,11 @@ void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 	}		
 }
 
-int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int tFrequentations[])
+int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[])
 {
 	FILE *f;
-	int choix = -1, idCarte, age, nbPoints, active, nbAdherents = 0;
+	int choix = -1, idCarte, age, nbPoints, pointsDep, nbAdherents = 0;
+	char active;
 	
 	while ((f=fopen("listeAdherents.don", "r")) == NULL)
 	{
@@ -143,7 +145,7 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 		}
 	}
 	
-	fscanf(f, "%d\t%d\t%d\t%d", &idCarte, &age, &nbPoints, &active);
+	fscanf(f, "%d\t%d\t%d\t%c\t%d", &idCarte, &age, &nbPoints, &active, &pointsDep);
 	
 	while (!feof(f))
 	{
@@ -151,16 +153,17 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesAct
 		tAges[nbAdherents] = age;
 		tNbPoints[nbAdherents] = nbPoints;
 		tCartesActives[nbAdherents] = active;
-		tFrequentations[nbAdherents] = 0;
+		tFrequentations[nbAdherents] = 'N';
+		tPointsDep[nbAdherents] = pointsDep;
 		nbAdherents++;
-		fscanf(f, "%d\t%d\t%d\t%d", &idCarte, &age, &nbPoints, &active);
+		fscanf(f, "%d\t%d\t%d\t%c\t%d", &idCarte, &age, &nbPoints, &active, &pointsDep);
 	}
 	
 	fclose(f);
 	return nbAdherents;
 }
 
-void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], int tCartesActives[], int nbAdherents)
+void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherents)
 {
 	FILE *f;
 	int i = 0;
@@ -169,7 +172,7 @@ void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], int tCart
 	
 	while (i < nbAdherents)
 	{
-		fprintf(f, "%04d\t%d\t%d\t%d\n", tIdCartes[i], tAges[i], tNbPoints[i], tCartesActives[i]);
+		fprintf(f, "%04d\t%d\t%d\t%c\t%d\n", tIdCartes[i], tAges[i], tNbPoints[i], tCartesActives[i], tPointsDep[i]);
 		i++;
 	}
 	
