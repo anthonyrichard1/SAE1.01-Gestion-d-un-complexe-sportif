@@ -1,10 +1,10 @@
 all : menus adherents
 	
 menus : menus.c testMenus.c adherents.c
-	gcc -Wall menus.c testMenus.c adherents.c -o complexe
+	gcc -Wall $^ -o menus.o
 	
 adherents : adherents.c testAdherents.c
-	gcc -Wall adherents.c testAdherents.c -o adherents
-		
+	gcc -Wall $^ -o adherents.o
+	
 clean :
-	rm complexe adherents
+	rm *.o

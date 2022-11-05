@@ -1,7 +1,13 @@
 all : doc
 
-doc : 
+doc :
 	doxygen
-
+	mv html/* .
+	rmdir html
+	
 clean :
-	rm -r html
+	mkdir ../tmp
+	mv Doxyfile Makefile ../tmp
+	rm -r *
+	mv ../tmp/Doxyfile ../tmp/Makefile .
+	rmdir ../tmp
