@@ -1,4 +1,4 @@
-all : menus adherents activites
+all : menus adherents activites complexe
 	
 menus : menus.c testMenus.c adherents.c activites.c
 	gcc -Wall $^ -o menus.o
@@ -6,8 +6,10 @@ menus : menus.c testMenus.c adherents.c activites.c
 adherents : adherents.c testAdherents.c
 	gcc -Wall $^ -o adherents.o
 	
-activites : activites.c adherents.c testActivites.c
+activites : adherents.c activites.c testActivites.c
 	gcc -Wall $^ -o activites.o
-
+	
+complexe : menus.c adherents.c activites.c complexe.c
+	gcc -Wall $^ -o complexe.exe
 clean :
-	rm *.o
+	rm *.o complexe.exe

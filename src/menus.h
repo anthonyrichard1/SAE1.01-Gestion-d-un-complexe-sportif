@@ -42,7 +42,13 @@ void menuActivites(int tIdCartes[], int tNbPoints[], char tCartesActives[], char
  * \brief Cette fonction permet de récupérer les données contenues dans le fichier listeAdherents.don pour les stocker dans des tableaux. Elle est utilisée au lancement de l'application.
  * \param tIdCartes[] Tableau d'entiers contenant les identifiants des adhérents.
  * \param tAges[] Tableau d'entiers contenant les ages des adhérents.
+ * \param tNbPoints[] Tableau d'entie
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
+ * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
+ * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
+ * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
+ * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
+ * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tars contenant les points des adhérents.
  * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
@@ -60,3 +66,8 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
  * \param nbAdherent Un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */
 void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherent);
+
+/**
+ * \brief Cette fonction contient les jeux de tests de tous les menus, le chargement et la sauvegarde de fichier.
+*/
+void jeuxEssais(void);

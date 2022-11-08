@@ -2,6 +2,7 @@
  * \file adherents.h
  * \author Anthony RICHARD Léana BESSON
  * \date 20/10/2022
+ * \brief Dans ce fichier sont répertoriées toutes les fonctions qui gère les adhérents de l'application.
  */
 
 /**
@@ -75,7 +76,18 @@ void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
+ * \param tFrequentation[] Tableau de caractères c
+ * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
+ * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
+ * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
+ * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
+ * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des taontenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */ 
 void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int nbAdherent);
+
+/**
+ * \brief Cette fonction contient les jeux de tests de toutes les fonctions de gestion des adhérents.
+*/
+void jeuxEssais(void);
