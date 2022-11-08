@@ -189,5 +189,11 @@ void jeuxEssais(void)
 	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 	
 	printf("--------------------\n\n");
+
+	printf("ajout multiples de points : id = 0001 + points = 50 et id = 0002 + points = 50\n");
+	alimenterCarte(ids, points, nbAdherents);
+	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+	
+	printf("--------------------\n\n");
 }
 
