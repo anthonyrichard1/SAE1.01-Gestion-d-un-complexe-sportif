@@ -19,22 +19,24 @@ void menuPrincipal(void);
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
  * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
- * \param *nbAdherents Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
+ * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */
-void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int *nbAdherents);
+void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int *nbAdherent);
 
 /**
  * \brief Cette fonction affiche le menu des activités, et permet de faire sélectionner l'opération que l'on souhaite effectuer sur les activités (liste des disponibilités, réservations par exemple). Le choix de l'utilisateur est récupéré par une saisie au clavier.
  * \param tIdCartes[] Tableau d'entiers contenant les identifiants des adhérents.
- * \param tAges[] Tableau d'entiers contenant les ages des adhérents.
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
- * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
- * \param *nbAdherents Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
+ * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité. 
+ * \param tCoutPoints[] Tableau d'entiers contenant le nombre de points que coûte une activité.
+ * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité. 
+ * \param nbActivite Un entier représentant le nombre d'activité (la taille logique des tableaux).
+ * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */
-void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int nbAdherents);
+void menuActivites(int tIdCartes[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int tActivite[], int tCoutPoints[], int tNbEntree[], int nbActivite, int *nbAdherent);
 
 /**
  * \brief Cette fonction permet de récupérer les données contenues dans le fichier listeAdherents.don pour les stocker dans des tableaux. Elle est utilisée au lancement de l'application.
@@ -55,6 +57,6 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau d'entiers représentant des 0 pour les adhérents dont les cartes sont désactivées et 1 pour ceux qui ont une carte active.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
- * \param nbAdherents Un entier représentant le nombre d'adhérents (la taille logique des tableaux).
+ * \param nbAdherent Un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */
-void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherents);
+void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherent);

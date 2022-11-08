@@ -2,15 +2,20 @@
 #include <stdlib.h>
 #include"menus.h"
 #include"adherents.h"
+#include"activites.h"
 
 void menuPrincipal(void)
 {
 	int choix, nbMaxAdherent = 10000, nbAdherent;
+	int nbActivite=14;
 
 	//Informations des adhérents
 	int tAges[nbMaxAdherent], tIdCartes[nbMaxAdherent], tNbPoints[nbMaxAdherent], tPointsDep[nbMaxAdherent];
 	char tCartesActives[nbMaxAdherent], tFrequentations[nbMaxAdherent];
 	
+	//Informations des activités
+	int tActivite[14]={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, tCoutPoints[14]={10, 15, 20, 10, 10, 10, 10, 20, 10, 15, 10, 10, 10, 15}, tNbEntree[14];
+
 	nbAdherent = chargerFichier(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, tPointsDep);
 	
 	while (1)
@@ -31,7 +36,7 @@ void menuPrincipal(void)
 				break;
 				
 			case 2 :
-				menuActivites(tIdCartes, tAges, tNbPoints, tCartesActives, tFrequentations, tPointsDep, nbMaxAdherent, nbAdherent);
+				menuActivites(tIdCartes, tNbPoints, tCartesActives, tFrequentations, tPointsDep, tActivite, tCoutPoints, tNbEntree, nbActivite, &nbAdherent);
 				break;
 			
 			case 9 :
@@ -45,7 +50,7 @@ void menuPrincipal(void)
 	}	
 }
 
-void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int *nbAdherents)
+void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int *nbAdherent)
 {
 	int choix;
 	
@@ -67,27 +72,27 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 		switch (choix)
 		{		
 			case 1 :
-				ajouterAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherents, nbMaxAdherents);
+				ajouterAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherent, nbMaxAdherents);
 				break;
 
 			case 2 :
-				alimenterCarte(tIdCartes, tNbPoints, *nbAdherents);
+				alimenterCarte(tIdCartes, tNbPoints, *nbAdherent);
 				break;
 
 			case 3 :
-				changerEtatCarte(tIdCartes, tCartesActives, *nbAdherents);
+				changerEtatCarte(tIdCartes, tCartesActives, *nbAdherent);
 				break;
 				
 			case 4 :
-				supprimerAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherents);
+				supprimerAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherent);
 				break;
 				
 			case 5 :
-				afficheAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherents);
+				afficheAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherent);
 				break;
 				
 			case 6 : 
-				afficheTAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherents);
+				afficheTAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherent);
 				break;
 				
 			case 9 :
@@ -100,7 +105,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 	}	
 }
 
-void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbMaxAdherents, int nbAdherents)
+void menuActivites(int tIdCartes[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int tActivite[], int tCoutPoints[], int tNbEntree[], int nbActivite, int *nbAdherent)
 {
 	int choix;
 	
@@ -110,7 +115,7 @@ void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 		"\nMenu des activités\n"
 		"1 - Voir la liste des activités disponibles\n"
 		"2 - Réserver une activité\n"
-		"5 - Afficher le nombre d'entrées par activités\n"
+		"3 - Afficher le nombre d'entrées par activités\n"
 		"9 - Menu principal\n"
 		"Votre choix : ");
 		
@@ -118,19 +123,32 @@ void menuActivites(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 		
 		switch (choix)
 		{			
+			case 1 :
+				listeActivites();
+				break;
+				
+			case 2 :
+				reservationActivite(tIdCartes, tNbPoints, tCartesActives, tFrequentations, tPointsDep, nbAdherent, tActivite, tCoutPoints, tNbEntree, nbActivite);
+				break;
+				
+			case 3 :
+				entreeActivite(tActivite, tNbEntree, nbActivite);
+				break;
+				
 			case 9 :
 				return;
 			
 			default :
 				printf("\nChoix incorrect, recommencez\n");
-		}		break;
+				break;
+			}
 	}		
 }
 
 int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[])
 {
 	FILE *f;
-	int choix = -1, idCarte, age, nbPoints, pointsDep, nbAdherents = 0;
+	int choix = -1, idCarte, age, nbPoints, pointsDep, nbAdherent = 0;
 	char active;
 	
 	while ((f=fopen("listeAdherents.don", "r")) == NULL)
@@ -149,28 +167,28 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 	
 	while (!feof(f))
 	{
-		tIdCartes[nbAdherents] = idCarte;
-		tAges[nbAdherents] = age;
-		tNbPoints[nbAdherents] = nbPoints;
-		tCartesActives[nbAdherents] = active;
-		tFrequentations[nbAdherents] = 'N';
-		tPointsDep[nbAdherents] = pointsDep;
-		nbAdherents++;
+		tIdCartes[nbAdherent] = idCarte;
+		tAges[nbAdherent] = age;
+		tNbPoints[nbAdherent] = nbPoints;
+		tCartesActives[nbAdherent] = active;
+		tFrequentations[nbAdherent] = 'N';
+		tPointsDep[nbAdherent] = pointsDep;
+		nbAdherent++;
 		fscanf(f, "%d\t%d\t%d\t%c\t%d", &idCarte, &age, &nbPoints, &active, &pointsDep);
 	}
 	
 	fclose(f);
-	return nbAdherents;
+	return nbAdherent;
 }
 
-void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherents)
+void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherent)
 {
 	FILE *f;
 	int i = 0;
 	
 	f = fopen("listeAdherents.don", "w");
 	
-	while (i < nbAdherents)
+	while (i < nbAdherent)
 	{
 		fprintf(f, "%04d\t%d\t%d\t%c\t%d\n", tIdCartes[i], tAges[i], tNbPoints[i], tCartesActives[i], tPointsDep[i]);
 		i++;
