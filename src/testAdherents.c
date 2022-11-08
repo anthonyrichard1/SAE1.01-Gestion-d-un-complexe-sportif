@@ -175,25 +175,25 @@ void jeuxEssais(void)
 	printf("id = 0005 + points = -5 (invalide)\n");
 	alimenterCarte(ids, points, nbAdherents);
 	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
-	
+
 	printf("--------------------\n\n");
 
 	printf("id = 0005 + points = 0 (invalide)\n");
 	alimenterCarte(ids, points, nbAdherents);
 	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
-	
+
 	printf("--------------------\n\n");
 
 	printf("id = 0005 + points = 10 (valide)\n");
 	alimenterCarte(ids, points, nbAdherents);
 	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
-	
+
 	printf("--------------------\n\n");
 
 	printf("ajout multiples de points : id = 0001 + points = 50 et id = 0002 + points = 50\n");
 	alimenterCarte(ids, points, nbAdherents);
 	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
-	
+
 	printf("--------------------\n\n");
 }
 

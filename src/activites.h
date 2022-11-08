@@ -7,11 +7,11 @@
 
 /**
  * \brief Cette fonction permet de rechercher la position et la présence d'une activité dans les tableaux. A partir du tableau des activités, la fonction transmet si elle a trouvée ou non l'activité et renvoie sa position dans le tableau (s'il est trouvé).
- * \param tActivite Tableau d'entiers contenant les numéros des activités. 
+ * \param tActivite Tableau d'entiers contenant les numéros des activités.
  * \param nbActivite Un entier représentant le nombre d'activité (la taille logique des tableaux).
  * \param val Un entier représentant la valeur que l'identifiant que l'on cherche.
  * \param *trouve Pointe vers un entier égal à 1 si l'identifiant est trouvé ou 0 dans le cas contraire.
- * \return int Un entier représentant la position de l'activite dans le tableau. 
+ * \return int Un entier représentant la position de l'activite dans le tableau.
  */
 int rechercherActivite(int tActivite[], int nbActivite, int val, int *trouve);
 
@@ -28,17 +28,17 @@ void listeActivites(void);
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité. 
+ * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité.
  * \param tCoutPoints[] Tableau d'entiers contenant le nombre de points que coûte une activité.
- * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité. 
+ * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité.
  * \param nbActivite Un entier représentant le nombre d'activité (la taille logique des tableaux).
  */
 void reservationActivite(int tIdCartes[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int *nbAdherent, int tActivite[], int tCoutPoints[], int tNbEntree[], int nbActivite);
 
 /**
  * \brief Cette fonction permet d'afficher le nombre d'entrée pour chaque activité.
- * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité. 
- * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité. 
+ * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité.
+ * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité.
  * \param nbActivite Un entier représentant le nombre d'activité (la taille logique des tableaux).
  */
 void entreeActivite(int tActivite[], int tNbEntree[], int nbActivite);

@@ -4,7 +4,7 @@
  * \date 20/10/2022
  * \brief Dans ce fichier sont répertoriées toutes les fonctions qui gère les menus de l'application.
  */
- 
+
 /**
  * \brief Cette fonction affiche le menu principal, un menu permettant de choisir entre les deux sous menus adhérents et activités. Elle ne possède aucun paramètre car l'option choisie est récupéré par une saisie au clavier.
  */
@@ -30,9 +30,9 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
  * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
- * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité. 
+ * \param tActivite[] Tableau d'entiers contenant le numéro de l'activité.
  * \param tCoutPoints[] Tableau d'entiers contenant le nombre de points que coûte une activité.
- * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité. 
+ * \param tNbEntree[] Tableau d'entiers contenant le nombre d'entrée dans la journée d'une activité.
  * \param nbActivite Un entier représentant le nombre d'activité (la taille logique des tableaux).
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
  */

@@ -8,7 +8,7 @@ int main (void)
 }
 
 void jeuxEssais(void)
-{	
+{
 
 	printf("menu principal + choix incorrect\n");
 

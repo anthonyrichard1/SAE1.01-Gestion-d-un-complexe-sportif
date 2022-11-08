@@ -12,7 +12,7 @@
  * \param val Un entier représentant la valeur que l'identifiant que l'on cherche.
  * \param *trouve Pointe vers un entier égal à 1 si l'identifiant est trouvé ou 0 dans le cas contraire.
  * \return int Un entier représentant la position de l'adhérent dans le tableau (s'il est trouvé) ou la position à laquelle il devrait être insérer pour garder un tableau trié.
- */ 
+ */
 int rechercherAdherent(int tIdCartes[], int nbAdherent, int val, int *trouve);
 
 /**
@@ -25,7 +25,7 @@ int rechercherAdherent(int tIdCartes[], int nbAdherent, int val, int *trouve);
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- */ 
+ */
 void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int *nbAdherent, int nbMaxAdherents);
 
 /**
@@ -34,7 +34,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
  * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- */ 
+ */
 void alimenterCarte(int tIdCartes[], int tNbPoints[], int nbAdherent);
 
 /**
@@ -42,7 +42,7 @@ void alimenterCarte(int tIdCartes[], int tNbPoints[], int nbAdherent);
  * \param tIdCartes[] Tableau d'entiers contenant les identifiants des adhérents.
  * \param tCartesActives[] Tableau de caractères contenant des 'N' pour les adhérents dont les cartes sont désactivées et 'O' pour ceux qui ont une carte active.
  * \param nbAdherent Un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- */ 
+ */
 void changerEtatCarte(int tIdCartes[], char tCartesActives[], int nbAdherent);
 
 /**
@@ -54,7 +54,7 @@ void changerEtatCarte(int tIdCartes[], char tCartesActives[], int nbAdherent);
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- */ 
+ */
 void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int *nbAdherent);
 
 /**
@@ -66,11 +66,11 @@ void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCart
  * \param tPointsDep[] Tableau d'entiers contenant le nombre de points dépensés depuis le l'obtention du dernier bonus.
  * \param tFrequentation[] Tableau de caractères contenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- */ 
+ */
 void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int nbAdherent);
 
 /**
- * \brief Cette fonction permet d'afficher les informations de tous les adhérents. 
+ * \brief Cette fonction permet d'afficher les informations de tous les adhérents.
  * \param tIdCartes[] Tableau d'entiers contenant les identifiants des adhérents.
  * \param tAges[] Tableau d'entiers contenant les ages des adhérents.
  * \param tNbPoints[] Tableau d'entiers contenant les points des adhérents.
@@ -84,7 +84,7 @@ void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
  * \param nbMaxAdherents Un entier représentant le nombre maximun d'adhérents (la taille physique des tableaux).
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des taontenant des 'O' pour les adhérents qui sont déjà venus au centre aujourd'hui et 'N' dans le cas contraire.
  * \param *nbAdherent Pointe vers un entier représentant le nombre d'adhérents (la taille logique des tableaux).
- */ 
+ */
 void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int nbAdherent);
 
 /**
