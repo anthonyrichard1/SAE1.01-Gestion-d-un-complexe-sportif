@@ -10,7 +10,6 @@ activites : adherents.c activites.c testActivites.c
 	gcc -Wall $^ -o activites.o
 
 complexe : menus.c adherents.c activites.c complexe.c
-	gcc -Wall $^ -o ../complexe.exe
+	gcc -Wall $^ -o complexe.exe
 clean :
-	rm *.o
-	rm ../complexe.exe
+	rm -f *.o complexe.exe

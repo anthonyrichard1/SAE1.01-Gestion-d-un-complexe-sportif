@@ -44,7 +44,7 @@ void menuPrincipal(void)
 				exit(0);
 
 			default :
-				printf("\nChoix incorrect, recommencez\n");
+				printf("\n\e[1;91mChoix incorrect, recommencez\e[0m\n");
 				break;
 		}
 	}
@@ -99,7 +99,7 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 				return;
 
 			default :
-				printf("\nChoix incorrect, recommencez\n");
+				printf("\n\e[1;91mChoix incorrect, recommencez\e[0m\n");
 				break;
 		}
 	}
@@ -139,7 +139,7 @@ void menuActivites(int tIdCartes[], int tNbPoints[], char tCartesActives[], char
 				return;
 
 			default :
-				printf("\nChoix incorrect, recommencez\n");
+				printf("\n\e[1;91mChoix incorrect, recommencez\e[0m\n");
 				break;
 			}
 	}
@@ -153,7 +153,7 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 
 	while ((f=fopen("listeAdherents.don", "r")) == NULL)
 	{
-		fprintf(stderr, "Erreur : le fichier est introuvable, veuillez insérer le fichier listeAdherents dans le dossier src puis tapez 1 pour réessayer ou 9 pour quitter le programme\n");
+		fprintf(stderr, "\e[1;91mErreur : le fichier est introuvable, veuillez insérer le fichier listeAdherents dans le dossier src puis tapez 1 pour réessayer ou 9 pour quitter le programme\e[0m\n");
 		scanf("%d", &choix);
 
 		switch (choix)
@@ -169,7 +169,7 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 	{
 		tIdCartes[nbAdherent] = idCarte;
 		tAges[nbAdherent] = age;
-		tNbPoints[nbAdherent] = nbPoints;
+		tNbPoints[nbAdherent] = nbPoints + pointsBonus(age, &pointsDep);
 		tCartesActives[nbAdherent] = active;
 		tFrequentations[nbAdherent] = 'N';
 		tPointsDep[nbAdherent] = pointsDep;
@@ -195,4 +195,25 @@ void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCar
 	}
 
 	fclose(f);
+}
+
+int pointsBonus(int age, int *pointsDep)
+{
+	int pb = 0;
+
+	if (*pointsDep >= 50)
+	{
+		pb += 10;
+
+		if (age < 18 || age >= 60)
+		{
+			pb += 5;
+		}
+	}
+
+	pb *= *pointsDep/50;
+
+	*pointsDep = *pointsDep%50;
+
+	return pb;
 }

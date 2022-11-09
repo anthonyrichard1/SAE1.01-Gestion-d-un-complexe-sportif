@@ -67,6 +67,8 @@ int chargerFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
  */
 void sauvegarderFichier(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], int nbAdherent);
 
+int pointsBonus(int age, int *pointsDep);
+
 /**
  * \brief Cette fonction contient les jeux de tests de tous les menus, le chargement et la sauvegarde de fichier.
 */
