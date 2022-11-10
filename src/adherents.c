@@ -173,22 +173,19 @@ void changerEtatCarte(int tIdCartes[], char tCartesActives[], int nbAdherents)
 	int idCarte, pos, trouve;
 	char choix;
 
-	while (1)
+	while (idCarte != -1)
 	{
 		printf("Entrez l'identifiant de la carte (-1 pour annuler l'opération) : ");
 		scanf("%d", &idCarte);
-
-		if (idCarte == -1)
-		{
-			printf("Fin de l'opération...\n");
-			return;
-		}
 
 		pos = rechercherAdherent(tIdCartes, nbAdherents, idCarte, &trouve);
 
 		if (!trouve)
 		{
-			fprintf(stderr, "\e[1;91mErreur : l'identifiant est inconnu, recommencez\e[0m\n");
+			if (idCarte != -1)
+			{
+				fprintf(stderr, "\e[1;91mErreur : l'identifiant est inconnu, recommencez\e[0m\n");
+			}
 		}
 		else
 		{
@@ -235,6 +232,9 @@ void changerEtatCarte(int tIdCartes[], char tCartesActives[], int nbAdherents)
 			}
 		}
 	}
+
+	printf("Fin de l'opération...\n");
+	return;
 }
 
 void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int *nbAdherents) {
