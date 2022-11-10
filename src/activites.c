@@ -62,10 +62,10 @@ void reservationActivite(int tIdCartes[], int tNbPoints[], char tCartesActives[]
 			fprintf(stderr, "\e[1;91mNous ne trouvons pas votre identifiant.\e[0m\n");
 		else {
 			if(tCartesActives[pos] == 'N') 
-				fprintf(stderr, "\e[1;91mVotre carte est désactivé, vous ne pouvez pas réserver d'activité.\e[0m\n");
+				fprintf(stderr, "\e[1;91mVotre carte est désactivée, vous ne pouvez pas réserver d'activité.\e[0m\n");
 			else {
 				if(tFrequentations[pos] == 'O') 
-					fprintf(stderr, "\e[1;91mVous avez déjà fréquenté le centre aujourd'hui.\e[0m\n");
+					fprintf(stderr, "\e[1;91mVous avez déjà fréquenter le centre aujourd'hui.\e[0m\n");
 				else {
 					while(nbResa < 3) {
 						listeActivites();
@@ -80,7 +80,7 @@ void reservationActivite(int tIdCartes[], int tNbPoints[], char tCartesActives[]
 						}
 
 						if (trouveAct == 0) 
-							fprintf(stderr, "\e[1;91mCe numéro d'activité est incorrecte.\e[0m\n");
+							fprintf(stderr, "\e[1;91mCe numéro d'activité est incorrect.\e[0m\n");
 						else {
 							if(tNbPoints[pos] < tCoutPoints[posAct]) {
 								fprintf(stderr, "\e[1;91mVous n'avez pas assez de points pour faire cette activité.\e[0m\n");
