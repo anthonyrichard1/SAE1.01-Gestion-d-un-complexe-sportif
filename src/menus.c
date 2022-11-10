@@ -20,8 +20,10 @@ void menuPrincipal(void)
 
 	while (1)
 	{
+		printf("\n----------------------------------------\n");
+
 		printf(
-		"\nMenu principal\n"
+		"\nMenu principal\n\n"
 		"1 - Menu des adhérents\n"
 		"2 - Menu des activités\n"
 		"9 - Quitter\n"
@@ -56,8 +58,10 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 
 	while (1)
 	{
+		printf("\n----------------------------------------\n");
+
 		printf(
-		"\nMenu des adhérents\n"
+		"\nMenu des adhérents\n\n"
 		"1 - Ajouter un adhérent\n"
 		"2 - Alimenter une carte\n"
 		"3 - Activer/Désactiver une carte\n"
@@ -111,8 +115,10 @@ void menuActivites(int tIdCartes[], int tNbPoints[], char tCartesActives[], char
 
 	while (1)
 	{
+		printf("\n----------------------------------------\n");
+
 		printf(
-		"\nMenu des activités\n"
+		"\nMenu des activités\n\n"
 		"1 - Voir la liste des activités disponibles\n"
 		"2 - Réserver une activité\n"
 		"3 - Afficher le nombre d'entrées par activités\n"

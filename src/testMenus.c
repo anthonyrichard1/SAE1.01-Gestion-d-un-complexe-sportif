@@ -24,29 +24,19 @@ void jeuxEssais(void)
 	pt = 153, pb = pointsBonus(59, &pt);
 	printf("point = 153, age = 59, attendu = (pt30, r3), résultat = (pt%d, r%d)\n", pb, pt);
 
-	printf("--------------------");
+	printf("----------------------------------------");
 
 	printf("Menus"); // Menus
 
 	printf("menu principal + choix incorrect");
 
-	printf("--------------------");
-
 	printf("menu des adhérents + choix  = [1, 2, 3, 4, 5, 6] (lancement des fonctions)");
-
-	printf("--------------------");
 
 	printf("menu des adhérents + choix incorrect");
 
-	printf("--------------------");
-
-	/*printf("menu des adhérents + choix  = [1, 2, 3, 4, 5, 6] (lancement des fonctions)");
-
-	printf("--------------------");
+	printf("menu des activités + choix  = [1, 2, 3] (lancement des fonctions)");
 
 	printf("menu des activités + choix incorrect");
-
-	printf("--------------------");*/
 
 	menuPrincipal();
 }
