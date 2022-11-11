@@ -1,6 +1,6 @@
 [![Build Status](https://codefirst.iut.uca.fr/api/badges/leana.besson/SAE1.01/status.svg)](https://codefirst.iut.uca.fr/leana.besson/SAE1.01)  
 
-# SAE1.01 Leana BESSON Anthony RICHARD
+# SAE 1.01 : Implémentation d'un besoin client - Léana BESSON Anthony RICHARD
 
 ## Installation et Désinstallation :
 
