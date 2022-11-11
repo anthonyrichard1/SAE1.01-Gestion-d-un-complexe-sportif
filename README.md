@@ -1,30 +1,33 @@
 [![Build Status](https://codefirst.iut.uca.fr/api/badges/leana.besson/SAE1.01/status.svg)](https://codefirst.iut.uca.fr/leana.besson/SAE1.01)  
 
-# SAE1.01 Leana BESSON Anthony RICHARD
+---
+SAE1.01 Leana BESSON Anthony RICHARD
+---
 
-Installation et Désinstallation :
+# Installation et Désinstallation :
 
-Pour installer : ouvrez un terminal dans ce dossier et tapez make. Les fichiers executables dans le dossier src et la documentation va se générer dans le dossier doc.
-Pour désinstaller : ouvrez un terminal dans ce dossier et tapez make clean.
+* Pour installer : ouvrez un terminal dans ce dossier et tapez `make`. Les fichiers executables dans le dossier `src` et la documentation va se générer dans le dossier `doc`.
 
-Utilisation :
+* Pour désinstaller : ouvrez un terminal dans ce dossier et tapez `make clean`.
 
-Pour lancer l'application, ouvrez un terminal dans le dossier src et executez le fichier complexe.exe avec la commande suivante : ./complexe.exe
+# Utilisation :
 
-Documentation :
+Pour lancer l'application, ouvrez un terminal dans le dossier `src` et executez le fichier `complexe.exe` avec la commande suivante :  `./complexe.exe`
 
-Une fois générée, la documentation sera accessible dans le dossier doc, en lançant le fichier index.hmtl.
+# Documentation :
 
-Jeux d'essais :
+Une fois générée, la documentation sera accessible dans le dossier `doc`, en lançant le fichier `index.hmtl`.
 
-Les jeux d'essais sont dans le dossier src.
+# Jeux d'essais :
 
-Codes : testMenus.c, testAdherents.c et testActivites.c.
-Executables : menus.o, adherents.o et activites.o
-Inputs : inpTestMenus, inpTestAdherents, inpTestActivites ; ces inputs permettent de tester les fonctions, il faut donc les passer sur l'entrée standard pour executer convenablement les executables, ce qui donne les commandes suivantes.
+Les jeux d'essais sont dans le dossier `src`.
 
-Commandes :
+* Codes : `testMenus.c`, `testAdherents.c` et `testActivites.c`.
+* Executables : `menus.o`, `adherents.o` et `activites.o`.
+* Inputs : `inpTestMenus`, `inpTestAdherents`, `inpTestActivites` ; ces inputs permettent de tester les fonctions, il faut donc les passer sur l'entrée standard pour executer convenablement les executables, ce qui donne les commandes suivantes.
 
-Pour les fonctions de gestion des menus (+chargement et sauvegarde du fichier) : ./menus.o < inpTestMenus
-Pour les fonction de gestion des adhérents : ./adherents.o < inpTestAdherents
-Pour les fonctions de gestion des activités : ./activites.o < inpTestActivites
+# Commandes :
+
+* Pour les fonctions de gestion des menus (+chargement et sauvegarde du fichier) : `./menus.o < inpTestMenus`
+* Pour les fonction de gestion des adhérents : `./adherents.o < inpTestAdherents`
+* Pour les fonctions de gestion des activités : `./activites.o < inpTestActivites`
