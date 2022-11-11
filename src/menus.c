@@ -139,7 +139,7 @@ void menuActivites(int tIdCartes[], int tNbPoints[], char tCartesActives[], char
 				break;
 
 			case 2 :
-				reservationActivite(tIdCartes, tNbPoints, tCartesActives, tFrequentations, tPointsDep, nbAdherent, tActivite, tCoutPoints, tNbEntree, nbActivite);
+				reservationActivite(tIdCartes, tNbPoints, tCartesActives, tFrequentations, tPointsDep, *nbAdherent, tActivite, tCoutPoints, tNbEntree, nbActivite);
 				break;
 
 			case 3 :

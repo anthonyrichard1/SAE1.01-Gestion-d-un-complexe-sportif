@@ -41,7 +41,7 @@ void listeActivites(void)
 
 }
 
-void reservationActivite(int tIdCartes[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int *nbAdherent, int tActivite[], int tCoutPoints[], int tNbEntree[], int nbActivite)
+void reservationActivite(int tIdCartes[], int tNbPoints[], char tCartesActives[], char tFrequentations[], int tPointsDep[], int nbAdherent, int tActivite[], int tCoutPoints[], int tNbEntree[], int nbActivite)
 {
 	int pos, trouve, identifiant, activite;
 	int posAct, trouveAct;
@@ -51,7 +51,7 @@ void reservationActivite(int tIdCartes[], int tNbPoints[], char tCartesActives[]
 		
 		printf("Entrez votre identifiant (-1 pour annuler l'opération) : ");
 		scanf("%d", &identifiant);
-		pos = rechercherAdherent(tIdCartes, *nbAdherent, identifiant, &trouve);
+		pos = rechercherAdherent(tIdCartes, nbAdherent, identifiant, &trouve);
 
 		if (identifiant == -1) {
 			printf("Fin de l'opération...\n");
