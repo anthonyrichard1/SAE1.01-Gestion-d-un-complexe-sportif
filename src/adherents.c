@@ -314,24 +314,8 @@ void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
 		}
 		else
 		{
-			printf("L'adherent %04d a %d ans et a %d points et a dépensé %d points depuis le dernier bonus. ", identifiant, tAges[pos], tNbPoints[pos], tPointsDep[pos]);
-
-			if (tCartesActives[pos] == 'O')
-			{
-				printf("Sa carte est activée et ");
-			}
-			else
-			{
-				printf("Sa carte est désactivée et ");
-			}
-			if (tFrequentations[pos] == 'O')
-			{
-				printf("il est déjà venu au centre aujourd'hui.\n");
-			}
-			else
-			{
-				printf("il n'est pas venu au centre aujourd'hui.\n");
-			}
+			printf("Id carte| Age \t| Nb points \t| Carte active \t| Points dépensés \t| Fréquentation\n");
+			printf("%04d \t| %d \t| %d \t\t| %c \t\t| %d \t\t\t| %c\n", tIdCartes[pos], tAges[pos], tNbPoints[pos], tCartesActives[pos], tPointsDep[pos], tFrequentations[pos])
 		}
 	}
 
