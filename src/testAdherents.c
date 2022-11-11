@@ -198,7 +198,33 @@ void jeuxEssais(void)
 
 	printf("ajout multiples de points : id = 0001 + points = 50 et id = 0002 + points = 50\n");
 	alimenterCarte(ids, points, nbAdherents);
-	afficheTAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("\n----------------------------------------");
+	printf("\n----------------------------------------\n\n");
+
+	printf("changerAgeAdherent\n"); //changerAgeAdherent
+
+	printf("id = 4561 (pas dans la liste)\n");
+	changerAgeAdherent(ids, ages, nbAdherents);
+
+	printf("\n----------------------------------------\n\n");
+
+	printf("id = 5 + age = -5 ou 0 (invalide)\n");
+	changerAgeAdherent(ids, ages, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("\n----------------------------------------\n\n");
+
+	printf("id = 5 + age = 50 (valide)\n");
+	changerAgeAdherent(ids, ages, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
+
+	printf("\n----------------------------------------\n\n");
+
+	printf("modifications multiples : (id = 0001, id = 0006 et id = 0008) + age = 124\n");
+	changerAgeAdherent(ids, ages, nbAdherents);
+	afficheAdherent(ids, ages, points, actives, dep, freq, nbAdherents);
 
 	printf("\n----------------------------------------\n\n");
 }

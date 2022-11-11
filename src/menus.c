@@ -66,8 +66,9 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 		"2 - Alimenter une carte\n"
 		"3 - Activer/Désactiver une carte\n"
 		"4 - Supprimer un adhérent\n"
-		"5 - Afficher les informations d'un adhérent\n"
-		"6 - Afficher les informations de tous les adhérents\n"
+		"5 - Changer l'âge d'un adhérent\n" 
+		"6 - Afficher les informations d'un adhérent\n"
+		"7 - Afficher les informations de tous les adhérents\n"
 		"9 - Menu principal\n"
 		"Votre choix : ");
 
@@ -91,11 +92,15 @@ void menuAdherents(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesAc
 				supprimerAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, nbAdherent);
 				break;
 
-			case 5 :
-				afficheAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherent);
+			case 5:
+				changerAgeAdherent(tIdCartes, tAges, *nbAdherent);
 				break;
 
 			case 6 :
+				afficheAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherent);
+				break;
+
+			case 7 :
 				afficheTAdherent(tIdCartes, tAges, tNbPoints, tCartesActives, tPointsDep, tFrequentations, *nbAdherent);
 				break;
 

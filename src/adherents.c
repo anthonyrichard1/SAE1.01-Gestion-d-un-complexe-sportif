@@ -61,7 +61,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
 			}
 			else
 			{
-				printf("Entrez l'age de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
+				printf("Entrez l'âge de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
 				scanf("%d", &age);
 
 				while (age <= 0)
@@ -72,8 +72,8 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
 						return;
 					}
 
-					fprintf(stderr, "\e[1;91mErreur : %d n'est pas un age valide (nombre négatif ou nul), recommencez\e[0m\n", idCarte);
-					printf("Entrez l'age de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
+					fprintf(stderr, "\e[1;91mErreur : %d n'est pas un âge valide (nombre négatif ou nul), recommencez\e[0m\n", idCarte);
+					printf("Entrez l'âge de l'adhérent à ajouter (-1 pour annuler l'opération) : ");
 					scanf("%d", &age);
 				}
 
@@ -122,7 +122,7 @@ void ajouterAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
 }
 
 void alimenterCarte(int tIdCartes[], int tNbPoints[], int nbAdherents) {
-	int points, identifiant, trouve, pos;
+	int points, identifiant = 0, trouve, pos;
 
 	while (identifiant != -1) {
 		printf("Entrez votre identifiant (-1 pour annuler l'opération) : ");
@@ -170,7 +170,7 @@ void alimenterCarte(int tIdCartes[], int tNbPoints[], int nbAdherents) {
 
 void changerEtatCarte(int tIdCartes[], char tCartesActives[], int nbAdherents)
 {
-	int idCarte, pos, trouve;
+	int idCarte = 0, pos, trouve;
 	char choix;
 
 	while (idCarte != -1)
@@ -238,7 +238,7 @@ void changerEtatCarte(int tIdCartes[], char tCartesActives[], int nbAdherents)
 }
 
 void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int *nbAdherents) {
-	int identifiant, pos, i, trouve;
+	int identifiant = 0, pos, i, trouve;
 	char verif;
 
 	while (identifiant != -1) {
@@ -296,8 +296,53 @@ void supprimerAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCart
 	return;
 }
 
+void changerAgeAdherent(int tIdCartes[], int tAges[], int nbAdherents)
+{
+	int id = 0, pos, trouve, age;
+
+	while (id != -1)
+	{
+		printf("Entrez l'identifiant dont il faut changer l'âge (-1 pour annuler l'opération) : ");
+		scanf("%d", &id);
+
+		pos = rechercherAdherent(tIdCartes, nbAdherents, id, &trouve);
+
+		if (!trouve)
+		{
+			if (id != -1)
+			{
+				fprintf(stderr, "\e[1;91mErreur : identitifiant introuvable.\e[0m\n");
+			}
+		}
+		else
+		{
+			printf("Entrez l'âge souhaité (-1 pour annuler l'opération) : ");
+			scanf("%d", &age);
+
+			while (age <=0)
+			{
+				if (age == -1)
+				{
+					printf("Fin de l'opération...");
+					return;
+				}
+
+				fprintf(stderr, "\e[1;91mErreur : %d n'est pas un âge valide (nombre négatif ou nul), recommencez\e[0m\n", age);
+				printf("Entrez l'âge souhaité (-1 pour annuler l'opération) : ");
+				scanf("%d", &age);
+			}
+
+			tAges[pos] = age;
+			printf("\e[1;92mAge modifié !\e[0m\n");
+		}
+	}
+	
+	printf("Fin de l'opération...\n");
+	return;
+}
+
 void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartesActives[], int tPointsDep[], char tFrequentations[], int nbAdherents) {
-	int identifiant, pos, trouve;
+	int identifiant = 0, pos, trouve;
 
 	while (identifiant != -1)
 	{
@@ -314,8 +359,8 @@ void afficheAdherent(int tIdCartes[], int tAges[], int tNbPoints[], char tCartes
 		}
 		else
 		{
-			printf("Id carte| Age \t| Nb points \t| Carte active \t| Points dépensés \t| Fréquentation\n");
-			printf("%04d \t| %d \t| %d \t\t| %c \t\t| %d \t\t\t| %c\n", tIdCartes[pos], tAges[pos], tNbPoints[pos], tCartesActives[pos], tPointsDep[pos], tFrequentations[pos])
+			printf("\nId carte| Age \t| Nb points \t| Carte active \t| Points dépensés \t| Fréquentation\n");
+			printf("%04d \t| %d \t| %d \t\t| %c \t\t| %d \t\t\t| %c\n", tIdCartes[pos], tAges[pos], tNbPoints[pos], tCartesActives[pos], tPointsDep[pos], tFrequentations[pos]);
 		}
 	}
 
@@ -331,4 +376,3 @@ void afficheTAdherent (int tIdCartes[], int tAges[], int tNbPoints[], char tCart
 		printf("%04d \t| %d \t| %d \t\t| %c \t\t| %d \t\t\t| %c\n", tIdCartes[i], tAges[i], tNbPoints[i], tCartesActives[i], tPointsDep[i], tFrequentations[i]);
 	}
 }
-
